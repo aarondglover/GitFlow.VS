@@ -348,6 +348,9 @@
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
+    <VSCTCompile Include="GitFlowVS.vsct">
+      <ResourceName>Menus.ctmenu</ResourceName>
+    </VSCTCompile>
     <Resource Include="Resources\upstreambranch.png" />
     <None Include="Dependencies\gitflow\git-flow-bugfix" />
     <None Include="Dependencies\gitflow\hooks\post-flow-bugfix-delete" />

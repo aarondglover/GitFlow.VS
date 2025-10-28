@@ -8,7 +8,13 @@
 
 
 ### Features 
-This Team Explorer extension integrates GitFlow into your development workflow. It lets you easily create and finish feature, release and hotfix branches right from Team Explorer. 
+This extension integrates GitFlow into your development workflow. It lets you easily create and finish feature, release and hotfix branches right from Visual Studio. 
+
+**For Visual Studio 2022 and earlier**: Access GitFlow through the Team Explorer window.
+
+**For Visual Studio 2026**: Since Team Explorer is deprecated, access GitFlow through:
+- The **Extensions** menu → **GitFlow**
+- The **Git** menu → **GitFlow...**
 
 It exposes the most common GitFlow options when finishing branches, such as options to delete branches, rebase on development branch and tagging of release branches.
 
@@ -18,7 +24,7 @@ http://blog.ehn.nu/2015/02/introducing-gitflow-for-visual-studio/
  
 
 ### Prerequirements
-The extension requires Visual Studio 2022 (it's also available for VS2019, VS2017 and VS2015). It will install GitFlow for you if it is not found on the machine. Since GitFlow depends on Git for Windows, this must be installed before using the extension 
+The extension requires Visual Studio 2022 or Visual Studio 2026 (it's also available for VS2019, VS2017 and VS2015). It will install GitFlow for you if it is not found on the machine. Since GitFlow depends on Git for Windows, this must be installed before using the extension.
  
 
 ## Screenshots

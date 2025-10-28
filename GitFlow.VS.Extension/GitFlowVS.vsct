@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="guidGitFlowVsExtensionPkg">
+    <Groups>
+      <!-- Group for Extensions menu -->
+      <Group guid="guidGitFlowVsExtensionCmdSet" id="ExtensionsMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_EXTENSIONS"/>
+      </Group>
+      
+      <!-- Group for Git menu -->
+      <Group guid="guidGitFlowVsExtensionCmdSet" id="GitMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_GIT"/>
+      </Group>
+    </Groups>
+
+    <Buttons>
+      <!-- GitFlow command in Extensions menu -->
+      <Button guid="guidGitFlowVsExtensionCmdSet" id="cmdidGitFlowCommand" priority="0x0100" type="Button">
+        <Parent guid="guidGitFlowVsExtensionCmdSet" id="ExtensionsMenuGroup" />
+        <Icon guid="guidImages" id="bmpGitFlow" />
+        <Strings>
+          <ButtonText>GitFlow</ButtonText>
+        </Strings>
+      </Button>
+      
+      <!-- GitFlow command in Git menu -->
+      <Button guid="guidGitFlowVsExtensionCmdSet" id="cmdidGitFlowGitMenuCommand" priority="0x0100" type="Button">
+        <Parent guid="guidGitFlowVsExtensionCmdSet" id="GitMenuGroup" />
+        <Icon guid="guidImages" id="bmpGitFlow" />
+        <Strings>
+          <ButtonText>GitFlow...</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\LinkIcon.png" usedList="bmpGitFlow"/>
+    </Bitmaps>
+  </Commands>
+
+  <Symbols>
+    <GuidSymbol name="guidGitFlowVsExtensionPkg" value="{19ffe08d-8c71-4125-a024-6296bd27fce8}" />
+    
+    <GuidSymbol name="guidGitFlowVsExtensionCmdSet" value="{9be3ffde-c8d0-4d89-824b-f310e4d05ca1}">
+      <IDSymbol name="ExtensionsMenuGroup" value="0x1020" />
+      <IDSymbol name="GitMenuGroup" value="0x1021" />
+      <IDSymbol name="cmdidGitFlowCommand" value="0x0100" />
+      <IDSymbol name="cmdidGitFlowGitMenuCommand" value="0x0101" />
+    </GuidSymbol>
+    
+    <GuidSymbol name="guidImages" value="{1b1e1e1e-1e1e-1e1e-1e1e-1e1e1e1e1e1e}" >
+      <IDSymbol name="bmpGitFlow" value="1" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
