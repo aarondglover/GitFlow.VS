@@ -99,8 +99,37 @@ namespace GitFlowVS.Extension
         private void InitGitFlow(object sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            ShowToolWindow(sender, e);
-            // The tool window will show the init UI if needed
+            
+            // For initialization, we direct users to Team Explorer where the full UI exists
+            // In the future, this could open a dedicated init dialog
+            var message = "To initialize GitFlow in your repository:\n\n" +
+                         "Option 1: Open Team Explorer > GitFlow page (click the GitFlow link in Team Explorer)\n" +
+                         "Option 2: Use the GitFlow command-line tool\n\n" +
+                         "Would you like to open Team Explorer now?";
+            
+            var result = System.Windows.MessageBox.Show(
+                message,
+                "Initialize GitFlow",
+                System.Windows.MessageBoxButton.YesNo,
+                System.Windows.MessageBoxImage.Information);
+            
+            if (result == System.Windows.MessageBoxResult.Yes)
+            {
+                // Try to navigate to Team Explorer
+                try
+                {
+                    var dte = Package.GetGlobalService(typeof(EnvDTE.DTE)) as EnvDTE.DTE;
+                    if (dte != null)
+                    {
+                        // This will open Team Explorer - users can then click the GitFlow navigation item
+                        dte.ExecuteCommand("View.TeamExplorer");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Exception(ex);
+                }
+            }
         }
 
         private void StartFeature(object sender, EventArgs e)

@@ -94,12 +94,16 @@ namespace GitFlowVS.Extension
             var gf = new VsGitFlowWrapper(activeRepo.RepositoryPath, outputWindow);
             if (!gf.IsInitialized)
             {
-                // Create a simple wrapper section for init
+                // Show init UI
                 var initSection = new GitFlowInitSection();
-                if (initSection.SectionContent != null)
+                // The section needs context that we don't have here, so just show a message
+                var initMessage = new TextBlock
                 {
-                    MainContent.Children.Add(initSection.SectionContent as UIElement);
-                }
+                    Text = "Repository is not initialized for GitFlow. Please use 'Extensions > GitFlow > Initialize GitFlow' or open the GitFlow page in Team Explorer to initialize.",
+                    Margin = new Thickness(0, 10, 0, 10),
+                    TextWrapping = TextWrapping.Wrap
+                };
+                MainContent.Children.Add(initMessage);
                 return;
             }
 
