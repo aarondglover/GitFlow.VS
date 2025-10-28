@@ -79,6 +79,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialogs\InitDialog.xaml.cs">
+      <DependentUpon>InitDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\StartFeatureDialog.xaml.cs">
+      <DependentUpon>StartFeatureDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FinishFeatureDialog.xaml.cs">
+      <DependentUpon>FinishFeatureDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\StartReleaseDialog.xaml.cs">
+      <DependentUpon>StartReleaseDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FinishReleaseDialog.xaml.cs">
+      <DependentUpon>FinishReleaseDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\StartHotfixDialog.xaml.cs">
+      <DependentUpon>StartHotfixDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FinishHotfixDialog.xaml.cs">
+      <DependentUpon>FinishHotfixDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GitFlowCommands.cs" />
     <Compile Include="GitFlowHelper.cs" />
     <Compile Include="GitFlowToolWindow.cs" />
@@ -332,6 +353,34 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Dialogs\InitDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\StartFeatureDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\FinishFeatureDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\StartReleaseDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\FinishReleaseDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\StartHotfixDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\FinishHotfixDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GitFlowToolWindowControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
