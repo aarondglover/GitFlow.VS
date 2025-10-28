@@ -100,36 +100,18 @@ namespace GitFlowVS.Extension
         {
             ThreadHelper.ThrowIfNotOnUIThread();
             
-            // For initialization, we direct users to Team Explorer where the full UI exists
+            // For now, show a message that directs users to use the command line or provides info
             // In the future, this could open a dedicated init dialog
-            var message = "To initialize GitFlow in your repository:\n\n" +
-                         "Option 1: Open Team Explorer > GitFlow page (click the GitFlow link in Team Explorer)\n" +
-                         "Option 2: Use the GitFlow command-line tool\n\n" +
-                         "Would you like to open Team Explorer now?";
+            var message = "To initialize GitFlow in your repository, you can:\n\n" +
+                         "1. Use the GitFlow command-line tool: git flow init\n" +
+                         "2. A dedicated initialization dialog will be added in a future update\n\n" +
+                         "For now, please use the command-line to initialize GitFlow with your preferred branch names.";
             
-            var result = System.Windows.MessageBox.Show(
+            System.Windows.MessageBox.Show(
                 message,
                 "Initialize GitFlow",
-                System.Windows.MessageBoxButton.YesNo,
+                System.Windows.MessageBoxButton.OK,
                 System.Windows.MessageBoxImage.Information);
-            
-            if (result == System.Windows.MessageBoxResult.Yes)
-            {
-                // Try to navigate to Team Explorer
-                try
-                {
-                    var dte = Package.GetGlobalService(typeof(EnvDTE.DTE)) as EnvDTE.DTE;
-                    if (dte != null)
-                    {
-                        // This will open Team Explorer - users can then click the GitFlow navigation item
-                        dte.ExecuteCommand("View.TeamExplorer");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logger.Exception(ex);
-                }
-            }
         }
 
         private void StartFeature(object sender, EventArgs e)

@@ -1,5 +1,3 @@
-using GitFlowVS.Extension.UI;
-using GitFlowVS.Extension.ViewModels;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TeamFoundation.Git.Extensibility;
@@ -85,8 +83,13 @@ namespace GitFlowVS.Extension
             // Check if GitFlow is installed
             if (!GitFlowHelper.IsGitFlowInstalled())
             {
-                var installUI = new InstallGitFlowUI();
-                MainContent.Children.Add(installUI);
+                var installMessage = new TextBlock
+                {
+                    Text = "GitFlow is not installed. The extension will attempt to install it when you initialize a repository.",
+                    Margin = new Thickness(0, 10, 0, 10),
+                    TextWrapping = TextWrapping.Wrap
+                };
+                MainContent.Children.Add(installMessage);
                 return;
             }
 
@@ -97,7 +100,7 @@ namespace GitFlowVS.Extension
                 // Show init message
                 var initMessage = new TextBlock
                 {
-                    Text = "Repository is not initialized for GitFlow. Please use 'Extensions > GitFlow > Initialize GitFlow' or open the GitFlow page in Team Explorer to initialize.",
+                    Text = "Repository is not initialized for GitFlow. Please use 'Extensions > GitFlow > Initialize GitFlow' to set up GitFlow in this repository.",
                     Margin = new Thickness(0, 10, 0, 10),
                     TextWrapping = TextWrapping.Wrap
                 };

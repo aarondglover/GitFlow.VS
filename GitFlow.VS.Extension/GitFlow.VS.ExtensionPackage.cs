@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
-using TeamExplorer.Common;
 using Task = System.Threading.Tasks.Task;
 
 namespace GitFlowVS.Extension
@@ -50,7 +49,6 @@ namespace GitFlowVS.Extension
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             
-            UserSettings.ServiceProvider = this;
             await GitFlowCommands.InitializeAsync(this);
         }
 
