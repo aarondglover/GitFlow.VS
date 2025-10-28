@@ -35,7 +35,7 @@ namespace GitFlow.VS
                     var featurePrefix = repo.Config.Get<string>("gitflow.prefix.feature");
                     if (featurePrefix == null)
                         return false;
-                    return repo.Head.Name.StartsWith(featurePrefix.Value);
+                    return repo.Head.FriendlyName.StartsWith(featurePrefix.Value);
                 }
             }
         }
@@ -52,7 +52,7 @@ namespace GitFlow.VS
                     var hotfixPrefix = repo.Config.Get<string>("gitflow.prefix.hotfix");
                     if (hotfixPrefix == null)
                         return false;
-                    return repo.Head.Name.StartsWith(hotfixPrefix.Value);
+                    return repo.Head.FriendlyName.StartsWith(hotfixPrefix.Value);
                 }
             }
         }
@@ -69,7 +69,7 @@ namespace GitFlow.VS
                     var masterBranch = repo.Config.Get<string>("gitflow.branch.master");
                     if (masterBranch == null)
                         return false;
-                    return repo.Head.Name == masterBranch.Value;
+                    return repo.Head.FriendlyName == masterBranch.Value;
                 }
             }
         }
@@ -123,11 +123,11 @@ namespace GitFlow.VS
                 {
                     var prefix = repo.Config.Get<string>("gitflow.prefix.feature").Value;
                     var featureBranches = 
-                        repo.Branches.Where(b => !b.IsRemote && b.Name.StartsWith(prefix) )
+                        repo.Branches.Where(b => !b.IsRemote && b.FriendlyName.StartsWith(prefix) )
                             .Select(c => new BranchItem
                             {
                                 Author = c.Tip.Author.Name,
-                                Name = c.Name.Replace(prefix,""),
+                                Name = c.FriendlyName.Replace(prefix,""),
                                 LastCommit = c.Tip.Author.When,
                                 IsTracking = c.IsTracking,
                                 IsCurrentBranch = c.IsCurrentRepositoryHead,
@@ -137,12 +137,12 @@ namespace GitFlow.VS
                             }).ToList();
 
                     var remoteFeatureBranches =
-                        repo.Branches.Where(b => b.IsRemote && b.Name.Contains(prefix)
+                        repo.Branches.Where(b => b.IsRemote && b.FriendlyName.Contains(prefix)
                         && !repo.Branches.Any(br => !br.IsRemote && br.IsTracking && br.TrackedBranch.CanonicalName== b.CanonicalName))
                             .Select(c => new BranchItem
                             {
                                 Author = c.Tip.Author.Name,
-                                Name = c.Name,
+                                Name = c.FriendlyName,
                                 LastCommit = c.Tip.Author.When,
                                 IsTracking = c.IsTracking,
                                 IsCurrentBranch = c.IsCurrentRepositoryHead,
@@ -169,11 +169,11 @@ namespace GitFlow.VS
 				{
 					var prefix = repo.Config.Get<string>("gitflow.prefix.release").Value;
 					var releaseBranches =
-						repo.Branches.Where(b => !b.IsRemote && b.Name.StartsWith(prefix))
+						repo.Branches.Where(b => !b.IsRemote && b.FriendlyName.StartsWith(prefix))
 							.Select(c => new BranchItem
 							{
 								Author = c.Tip.Author.Name,
-								Name = c.Name.Replace(prefix, ""),
+								Name = c.FriendlyName.Replace(prefix, ""),
 								LastCommit = c.Tip.Author.When,
 								IsTracking = c.IsTracking,
 								IsCurrentBranch = c.IsCurrentRepositoryHead,
@@ -247,9 +247,9 @@ namespace GitFlow.VS
             {
                 var prefix = repo.Config.Get<string>(config).Value;
                 var gitFlowBranches =
-                    repo.Branches.Where(b => !b.IsRemote && b.Name.StartsWith(prefix)).ToList();
+                    repo.Branches.Where(b => !b.IsRemote && b.FriendlyName.StartsWith(prefix)).ToList();
 
-                return gitFlowBranches.Select(b => b.Name.Replace(prefix, "")).ToList();
+                return gitFlowBranches.Select(b => b.FriendlyName.Replace(prefix, "")).ToList();
             }   
         }
 
@@ -265,7 +265,7 @@ namespace GitFlow.VS
                     var developBranch = repo.Config.Get<string>("gitflow.branch.develop");
                     if (developBranch == null)
                         return false;
-                    return repo.Head.Name == developBranch.Value;
+                    return repo.Head.FriendlyName == developBranch.Value;
                 }
             }
         }
@@ -282,7 +282,7 @@ namespace GitFlow.VS
                     var releasePrefix = repo.Config.Get<string>("gitflow.prefix.release");
                     if (releasePrefix == null)
                         return false;
-                    return repo.Head.Name.StartsWith(releasePrefix.Value);
+                    return repo.Head.FriendlyName.StartsWith(releasePrefix.Value);
                 }
             }
         }
@@ -293,7 +293,7 @@ namespace GitFlow.VS
             {
                 using (var repo = new Repository(repoDirectory))
                 {
-                    return repo.Head.Name;
+                    return repo.Head.FriendlyName;
                 }                
             }
         }
@@ -304,7 +304,7 @@ namespace GitFlow.VS
             {
                 using (var repo = new Repository(repoDirectory))
                 {
-                    string fullBranchName = repo.Head.Name;
+                    string fullBranchName = repo.Head.FriendlyName;
                     ConfigurationEntry<string> prefix = null;
 
                     if (IsOnFeatureBranch)

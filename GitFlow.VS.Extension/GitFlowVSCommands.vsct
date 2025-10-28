@@ -7,7 +7,7 @@
   <Commands package="guidGitFlowVSPackage">
     <Groups>
       <Group guid="guidGitFlowVSCommandSet" id="GitFlowMenuGroup" priority="0x0600">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_EXTENSIONS"/>
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
       </Group>
       <Group guid="guidGitFlowVSCommandSet" id="GitFlowSubMenuGroup" priority="0x0000">
         <Parent guid="guidGitFlowVSCommandSet" id="GitFlowSubMenu"/>
