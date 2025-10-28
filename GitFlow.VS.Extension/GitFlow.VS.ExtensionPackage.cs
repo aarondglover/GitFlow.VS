@@ -35,20 +35,22 @@ namespace GitFlowVS.Extension
                 if (commandService != null)
                 {
                     // Add command for Extensions menu
-                    var menuCommandID = new CommandID(GuidList.GuidGitFlowVsExtensionCmdSet, (int)GuidList.CmdidGitFlowCommand);
-                    var menuItem = new OleMenuCommand(ShowGitFlowPage, menuCommandID);
-                    menuItem.BeforeQueryStatus += OnBeforeQueryStatus;
-                    commandService.AddCommand(menuItem);
+                    AddMenuCommand(commandService, (int)GuidList.CmdidGitFlowCommand);
                     
                     // Add command for Git menu
-                    var gitMenuCommandID = new CommandID(GuidList.GuidGitFlowVsExtensionCmdSet, (int)GuidList.CmdidGitFlowGitMenuCommand);
-                    var gitMenuItem = new OleMenuCommand(ShowGitFlowPage, gitMenuCommandID);
-                    gitMenuItem.BeforeQueryStatus += OnBeforeQueryStatus;
-                    commandService.AddCommand(gitMenuItem);
+                    AddMenuCommand(commandService, (int)GuidList.CmdidGitFlowGitMenuCommand);
                 }
             });
             
             return System.Threading.Tasks.Task.FromResult<object>(null);
+        }
+
+        private void AddMenuCommand(OleMenuCommandService commandService, int commandId)
+        {
+            var menuCommandID = new CommandID(GuidList.GuidGitFlowVsExtensionCmdSet, commandId);
+            var menuItem = new OleMenuCommand(ShowGitFlowPage, menuCommandID);
+            menuItem.BeforeQueryStatus += OnBeforeQueryStatus;
+            commandService.AddCommand(menuItem);
         }
 
         private void OnBeforeQueryStatus(object sender, EventArgs e)
