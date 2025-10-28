@@ -77,7 +77,7 @@ namespace GitFlowVS.Extension
                 return;
             }
 
-            CurrentBranchText.Text = activeRepo.CurrentBranch ?? "(unknown)";
+            CurrentBranchText.Text = activeRepo.CurrentBranch?.Name ?? "(unknown)";
             MainContent.Children.Clear();
 
             // Check if GitFlow is installed
