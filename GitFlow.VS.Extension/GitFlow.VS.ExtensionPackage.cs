@@ -36,17 +36,31 @@ namespace GitFlowVS.Extension
                 {
                     // Add command for Extensions menu
                     var menuCommandID = new CommandID(GuidList.GuidGitFlowVsExtensionCmdSet, (int)GuidList.CmdidGitFlowCommand);
-                    var menuItem = new MenuCommand(ShowGitFlowPage, menuCommandID);
+                    var menuItem = new OleMenuCommand(ShowGitFlowPage, menuCommandID);
+                    menuItem.BeforeQueryStatus += OnBeforeQueryStatus;
                     commandService.AddCommand(menuItem);
                     
                     // Add command for Git menu
                     var gitMenuCommandID = new CommandID(GuidList.GuidGitFlowVsExtensionCmdSet, (int)GuidList.CmdidGitFlowGitMenuCommand);
-                    var gitMenuItem = new MenuCommand(ShowGitFlowPage, gitMenuCommandID);
+                    var gitMenuItem = new OleMenuCommand(ShowGitFlowPage, gitMenuCommandID);
+                    gitMenuItem.BeforeQueryStatus += OnBeforeQueryStatus;
                     commandService.AddCommand(gitMenuItem);
                 }
             });
             
             return System.Threading.Tasks.Task.FromResult<object>(null);
+        }
+
+        private void OnBeforeQueryStatus(object sender, EventArgs e)
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            
+            if (sender is OleMenuCommand menuCommand)
+            {
+                // Show command only when a Git repository is active
+                var gitService = GetService(typeof(IGitExt)) as IGitExt;
+                menuCommand.Visible = gitService != null && gitService.ActiveRepositories.Any();
+            }
         }
 
         private void ShowGitFlowPage(object sender, EventArgs e)
