@@ -104,12 +104,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GitFlowActionSection.cs" />
+    <Compile Include="GitFlowCommands.cs" />
+    <Compile Include="GitFlowHelper.cs" />
     <Compile Include="GitFlowReleasesSection.cs" />
     <Compile Include="GitFlowFeaturesSection.cs" />
     <Compile Include="GitFlowInitSection.cs" />
     <Compile Include="GitFlowInstallSection.cs" />
     <Compile Include="GitFlowNavigationItem.cs" />
     <Compile Include="GitFlowPage.cs" />
+    <Compile Include="GitFlowToolWindow.cs" />
+    <Compile Include="GitFlowToolWindowControl.xaml.cs">
+      <DependentUpon>GitFlowToolWindowControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IGitFlowSection.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="UI\Commands.cs" />
@@ -348,6 +354,9 @@
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
+    <VSCTCompile Include="GitFlowVSCommands.vsct">
+      <ResourceName>Menus.ctmenu</ResourceName>
+    </VSCTCompile>
     <Resource Include="Resources\upstreambranch.png" />
     <None Include="Dependencies\gitflow\git-flow-bugfix" />
     <None Include="Dependencies\gitflow\hooks\post-flow-bugfix-delete" />
@@ -385,6 +394,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="GitFlowToolWindowControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\ReleasesUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
