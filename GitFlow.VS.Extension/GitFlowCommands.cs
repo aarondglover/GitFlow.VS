@@ -532,5 +532,155 @@ namespace GitFlowVS.Extension
             // This method is no longer used, but keeping it for compatibility
             ShowToolWindow(this, EventArgs.Empty);
         }
+
+        // Static helper methods for tool window to call directly
+        public static void ExecuteInitGitFlow(string repoPath, IVsOutputWindowPane outputWindow, InitDialog dialog)
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            
+            var gf = new VsGitFlowWrapper(repoPath, outputWindow);
+            
+            var result = gf.Init(new GitFlowRepoSettings
+            {
+                DevelopBranch = dialog.DevelopBranch,
+                MasterBranch = dialog.MasterBranch,
+                FeatureBranch = dialog.FeaturePrefix,
+                ReleaseBranch = dialog.ReleasePrefix,
+                HotfixBranch = dialog.HotfixPrefix,
+                SupportBranch = dialog.SupportPrefix,
+                VersionTag = dialog.VersionTagPrefix
+            });
+
+            if (result.Success)
+            {
+                System.Windows.MessageBox.Show(
+                    "GitFlow has been successfully initialized for this repository!",
+                    "Initialize GitFlow",
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Information);
+            }
+            else
+            {
+                System.Windows.MessageBox.Show(
+                    $"Failed to initialize GitFlow:\n{result.CommandOutput}",
+                    "Initialize GitFlow",
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Error);
+            }
+        }
+
+        public static void ExecuteStartFeature(string repoPath, IVsOutputWindowPane outputWindow, string featureName)
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            
+            var gf = new VsGitFlowWrapper(repoPath, outputWindow);
+            var result = gf.StartFeature(featureName);
+            
+            if (result.Success)
+            {
+                System.Windows.MessageBox.Show($"Feature '{featureName}' started successfully!",
+                    "Start Feature", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+            }
+            else
+            {
+                System.Windows.MessageBox.Show($"Failed to start feature:\n{result.CommandOutput}",
+                    "Start Feature", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+            }
+        }
+
+        public static void ExecuteFinishFeature(string repoPath, IVsOutputWindowPane outputWindow, string featureName)
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            
+            var gf = new VsGitFlowWrapper(repoPath, outputWindow);
+            var result = gf.FinishFeature(featureName);
+            
+            if (result.Success)
+            {
+                System.Windows.MessageBox.Show($"Feature '{featureName}' finished successfully!",
+                    "Finish Feature", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+            }
+            else
+            {
+                System.Windows.MessageBox.Show($"Failed to finish feature:\n{result.CommandOutput}",
+                    "Finish Feature", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+            }
+        }
+
+        public static void ExecuteStartRelease(string repoPath, IVsOutputWindowPane outputWindow, string releaseName)
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            
+            var gf = new VsGitFlowWrapper(repoPath, outputWindow);
+            var result = gf.StartRelease(releaseName);
+            
+            if (result.Success)
+            {
+                System.Windows.MessageBox.Show($"Release '{releaseName}' started successfully!",
+                    "Start Release", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+            }
+            else
+            {
+                System.Windows.MessageBox.Show($"Failed to start release:\n{result.CommandOutput}",
+                    "Start Release", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+            }
+        }
+
+        public static void ExecuteFinishRelease(string repoPath, IVsOutputWindowPane outputWindow, string releaseName)
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            
+            var gf = new VsGitFlowWrapper(repoPath, outputWindow);
+            var result = gf.FinishRelease(releaseName);
+            
+            if (result.Success)
+            {
+                System.Windows.MessageBox.Show($"Release '{releaseName}' finished successfully!",
+                    "Finish Release", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+            }
+            else
+            {
+                System.Windows.MessageBox.Show($"Failed to finish release:\n{result.CommandOutput}",
+                    "Finish Release", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+            }
+        }
+
+        public static void ExecuteStartHotfix(string repoPath, IVsOutputWindowPane outputWindow, string hotfixName)
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            
+            var gf = new VsGitFlowWrapper(repoPath, outputWindow);
+            var result = gf.StartHotfix(hotfixName);
+            
+            if (result.Success)
+            {
+                System.Windows.MessageBox.Show($"Hotfix '{hotfixName}' started successfully!",
+                    "Start Hotfix", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+            }
+            else
+            {
+                System.Windows.MessageBox.Show($"Failed to start hotfix:\n{result.CommandOutput}",
+                    "Start Hotfix", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+            }
+        }
+
+        public static void ExecuteFinishHotfix(string repoPath, IVsOutputWindowPane outputWindow, string hotfixName)
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            
+            var gf = new VsGitFlowWrapper(repoPath, outputWindow);
+            var result = gf.FinishHotfix(hotfixName);
+            
+            if (result.Success)
+            {
+                System.Windows.MessageBox.Show($"Hotfix '{hotfixName}' finished successfully!",
+                    "Finish Hotfix", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+            }
+            else
+            {
+                System.Windows.MessageBox.Show($"Failed to finish hotfix:\n{result.CommandOutput}",
+                    "Finish Hotfix", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+            }
+        }
     }
 }
