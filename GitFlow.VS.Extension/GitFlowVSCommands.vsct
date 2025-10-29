@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="guidGitFlowVSPackage">
+    <Groups>
+      <Group guid="guidGitFlowVSCommandSet" id="GitFlowMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+      </Group>
+      <Group guid="guidGitFlowVSCommandSet" id="GitFlowSubMenuGroup" priority="0x0000">
+        <Parent guid="guidGitFlowVSCommandSet" id="GitFlowSubMenu"/>
+      </Group>
+    </Groups>
+
+    <Menus>
+      <Menu guid="guidGitFlowVSCommandSet" id="GitFlowSubMenu" priority="0x0100" type="Menu">
+        <Parent guid="guidGitFlowVSCommandSet" id="GitFlowMenuGroup"/>
+        <Strings>
+          <ButtonText>GitFlow</ButtonText>
+          <CommandName>GitFlow</CommandName>
+        </Strings>
+      </Menu>
+    </Menus>
+
+    <Buttons>
+      <Button guid="guidGitFlowVSCommandSet" id="cmdidGitFlowWindow" priority="0x0100" type="Button">
+        <Parent guid="guidGitFlowVSCommandSet" id="GitFlowSubMenuGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Show GitFlow Window</ButtonText>
+        </Strings>
+      </Button>
+      
+      <Button guid="guidGitFlowVSCommandSet" id="cmdidInitGitFlow" priority="0x0101" type="Button">
+        <Parent guid="guidGitFlowVSCommandSet" id="GitFlowSubMenuGroup" />
+        <Strings>
+          <ButtonText>Initialize GitFlow</ButtonText>
+        </Strings>
+      </Button>
+      
+      <Button guid="guidGitFlowVSCommandSet" id="cmdidStartFeature" priority="0x0102" type="Button">
+        <Parent guid="guidGitFlowVSCommandSet" id="GitFlowSubMenuGroup" />
+        <Strings>
+          <ButtonText>Start Feature...</ButtonText>
+        </Strings>
+      </Button>
+      
+      <Button guid="guidGitFlowVSCommandSet" id="cmdidFinishFeature" priority="0x0103" type="Button">
+        <Parent guid="guidGitFlowVSCommandSet" id="GitFlowSubMenuGroup" />
+        <Strings>
+          <ButtonText>Finish Feature...</ButtonText>
+        </Strings>
+      </Button>
+      
+      <Button guid="guidGitFlowVSCommandSet" id="cmdidStartRelease" priority="0x0104" type="Button">
+        <Parent guid="guidGitFlowVSCommandSet" id="GitFlowSubMenuGroup" />
+        <Strings>
+          <ButtonText>Start Release...</ButtonText>
+        </Strings>
+      </Button>
+      
+      <Button guid="guidGitFlowVSCommandSet" id="cmdidFinishRelease" priority="0x0105" type="Button">
+        <Parent guid="guidGitFlowVSCommandSet" id="GitFlowSubMenuGroup" />
+        <Strings>
+          <ButtonText>Finish Release...</ButtonText>
+        </Strings>
+      </Button>
+      
+      <Button guid="guidGitFlowVSCommandSet" id="cmdidStartHotfix" priority="0x0106" type="Button">
+        <Parent guid="guidGitFlowVSCommandSet" id="GitFlowSubMenuGroup" />
+        <Strings>
+          <ButtonText>Start Hotfix...</ButtonText>
+        </Strings>
+      </Button>
+      
+      <Button guid="guidGitFlowVSCommandSet" id="cmdidFinishHotfix" priority="0x0107" type="Button">
+        <Parent guid="guidGitFlowVSCommandSet" id="GitFlowSubMenuGroup" />
+        <Strings>
+          <ButtonText>Finish Hotfix...</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\LinkIcon.png" usedList="bmpPic1"/>
+    </Bitmaps>
+  </Commands>
+
+  <Symbols>
+    <GuidSymbol name="guidGitFlowVSPackage" value="{19ffe08d-8c71-4125-a024-6296bd27fce8}" />
+
+    <GuidSymbol name="guidGitFlowVSCommandSet" value="{9be3ffde-c8d0-4d89-824b-f310e4d05ca1}">
+      <IDSymbol name="GitFlowMenuGroup" value="0x1020" />
+      <IDSymbol name="GitFlowSubMenuGroup" value="0x1021" />
+      <IDSymbol name="GitFlowSubMenu" value="0x1100"/>
+      <IDSymbol name="cmdidGitFlowWindow" value="0x0100" />
+      <IDSymbol name="cmdidInitGitFlow" value="0x0101" />
+      <IDSymbol name="cmdidStartFeature" value="0x0102" />
+      <IDSymbol name="cmdidFinishFeature" value="0x0103" />
+      <IDSymbol name="cmdidStartRelease" value="0x0104" />
+      <IDSymbol name="cmdidFinishRelease" value="0x0105" />
+      <IDSymbol name="cmdidStartHotfix" value="0x0106" />
+      <IDSymbol name="cmdidFinishHotfix" value="0x0107" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidImages" value="{D4E4F5A5-5A72-4E3E-8B2E-5F5A5E5F5A5E}" >
+      <IDSymbol name="bmpPic1" value="1" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

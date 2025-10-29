@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Reflection;
 using Microsoft.ApplicationInsights;
-using TeamExplorer.Common;
 
 namespace GitFlowVS.Extension
 {

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11123.170
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7A31A09F-1E7B-4389-9795-2752C2A6DF40}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,8 +15,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitFlow.VS.Tests", "GitFlow.VS.Tests\GitFlow.VS.Tests.csproj", "{AED3FCED-BD51-4B0D-821F-5502C350F27E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitFlow.VS.Extension", "GitFlow.VS.Extension\GitFlow.VS.Extension.csproj", "{B5F05374-4507-4ACE-A4F5-7AF90ABE9ED4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamExplorer.Common", "TeamExplorer.Common\TeamExplorer.Common.csproj", "{388AC013-C628-4A32-ABBC-A28A68C3A112}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{F7864E21-C5D4-4C74-B930-F1991C5DEDE9}"
 	ProjectSection(SolutionItems) = preProject
@@ -75,18 +73,6 @@ Global
 		{B5F05374-4507-4ACE-A4F5-7AF90ABE9ED4}.VS2019|Any CPU.Build.0 = VS2019|Any CPU
 		{B5F05374-4507-4ACE-A4F5-7AF90ABE9ED4}.VS2019|x86.ActiveCfg = VS2019|x86
 		{B5F05374-4507-4ACE-A4F5-7AF90ABE9ED4}.VS2019|x86.Build.0 = VS2019|x86
-		{388AC013-C628-4A32-ABBC-A28A68C3A112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{388AC013-C628-4A32-ABBC-A28A68C3A112}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{388AC013-C628-4A32-ABBC-A28A68C3A112}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{388AC013-C628-4A32-ABBC-A28A68C3A112}.Debug|x86.Build.0 = Debug|Any CPU
-		{388AC013-C628-4A32-ABBC-A28A68C3A112}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{388AC013-C628-4A32-ABBC-A28A68C3A112}.Release|Any CPU.Build.0 = Release|Any CPU
-		{388AC013-C628-4A32-ABBC-A28A68C3A112}.Release|x86.ActiveCfg = Release|Any CPU
-		{388AC013-C628-4A32-ABBC-A28A68C3A112}.Release|x86.Build.0 = Release|Any CPU
-		{388AC013-C628-4A32-ABBC-A28A68C3A112}.VS2019|Any CPU.ActiveCfg = VS2019|Any CPU
-		{388AC013-C628-4A32-ABBC-A28A68C3A112}.VS2019|Any CPU.Build.0 = VS2019|Any CPU
-		{388AC013-C628-4A32-ABBC-A28A68C3A112}.VS2019|x86.ActiveCfg = VS2019|Any CPU
-		{388AC013-C628-4A32-ABBC-A28A68C3A112}.VS2019|x86.Build.0 = VS2019|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

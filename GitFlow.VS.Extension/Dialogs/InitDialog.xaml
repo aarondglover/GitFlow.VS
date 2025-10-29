@@ -1,0 +1,93 @@
+<Window x:Class="GitFlowVS.Extension.Dialogs.InitDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
+        Title="Initialize GitFlow" 
+        Height="520" Width="520"
+        WindowStartupLocation="CenterOwner"
+        Background="{DynamicResource {x:Static vsshell:VsBrushes.WindowKey}}">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Grid.Row="0" Text="Configure GitFlow Branch Names and Prefixes" 
+                   FontSize="14" FontWeight="Bold" Margin="0,0,0,15"
+                   Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"/>
+
+        <!-- Configuration Form -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Text="Branch Names" FontWeight="Bold" Margin="0,0,0,10"
+                          Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"/>
+                
+                <Grid Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Production branch:" VerticalAlignment="Center" Margin="0,0,0,10"
+                              Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="MasterBranchText" Text="master" Margin="0,0,0,10" Padding="5"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Development branch:" VerticalAlignment="Center" Margin="0,0,0,10"
+                              Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="DevelopBranchText" Text="develop" Margin="0,0,0,10" Padding="5"/>
+                </Grid>
+
+                <Separator Margin="0,10"/>
+                
+                <TextBlock Text="Branch Prefixes" FontWeight="Bold" Margin="0,15,0,10"
+                          Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"/>
+                
+                <Grid Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Feature prefix:" VerticalAlignment="Center" Margin="0,0,0,10"
+                              Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="FeaturePrefixText" Text="feature/" Margin="0,0,0,10" Padding="5"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Release prefix:" VerticalAlignment="Center" Margin="0,0,0,10"
+                              Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="ReleasePrefixText" Text="release/" Margin="0,0,0,10" Padding="5"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Hotfix prefix:" VerticalAlignment="Center" Margin="0,0,0,10"
+                              Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="HotfixPrefixText" Text="hotfix/" Margin="0,0,0,10" Padding="5"/>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Support prefix:" VerticalAlignment="Center" Margin="0,0,0,10"
+                              Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="SupportPrefixText" Text="support/" Margin="0,0,0,10" Padding="5"/>
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Version tag prefix:" VerticalAlignment="Center" Margin="0,0,0,10"
+                              Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="VersionTagPrefixText" Text="" Margin="0,0,0,10" Padding="5"/>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,0">
+            <Button Content="OK" Width="80" Height="28" Margin="0,0,10,0" IsDefault="True" Click="OkButton_Click"/>
+            <Button Content="Cancel" Width="80" Height="28" IsCancel="True" Click="CancelButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
